@@ -1,4 +1,4 @@
-'use strict';
+"use strict";
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
@@ -9,13 +9,6 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 var contentNode = document.getElementById('contents');
-var issues = [{
-  id: 1, status: 'Open', owner: 'Ravan', created: new Date('2018-08-15'),
-  effort: 5, completionDate: undefined, title: 'Error in console when clicking Add'
-}, {
-  id: 2, status: 'Assigned', owner: 'Eddied', created: new Date('2018-08-13'),
-  effort: 15, completionDate: new Date('2018-08-23'), title: 'Missing bottom border on panel'
-}];
 
 var IssueRow = function (_React$Component) {
   _inherits(IssueRow, _React$Component);
@@ -27,44 +20,44 @@ var IssueRow = function (_React$Component) {
   }
 
   _createClass(IssueRow, [{
-    key: 'render',
+    key: "render",
     value: function render() {
       var issue = this.props.issue;
       return React.createElement(
-        'tr',
+        "tr",
         null,
         React.createElement(
-          'td',
+          "td",
           null,
           issue.id
         ),
         React.createElement(
-          'td',
+          "td",
           null,
           issue.status
         ),
         React.createElement(
-          'td',
+          "td",
           null,
           issue.owner
         ),
         React.createElement(
-          'td',
+          "td",
           null,
           issue.created.toDateString()
         ),
         React.createElement(
-          'td',
+          "td",
           null,
           issue.effort
         ),
         React.createElement(
-          'td',
+          "td",
           null,
           issue.completionDate ? issue.completionDate.toDateString() : ""
         ),
         React.createElement(
-          'td',
+          "td",
           null,
           issue.title
         )
@@ -85,12 +78,12 @@ var IssueFilter = function (_React$Component2) {
   }
 
   _createClass(IssueFilter, [{
-    key: 'render',
+    key: "render",
     value: function render() {
       return React.createElement(
-        'div',
+        "div",
         null,
-        'This is place holder for Issue Filter'
+        "This is place holder for Issue Filter"
       );
     }
   }]);
@@ -108,59 +101,59 @@ var IssueTable = function (_React$Component3) {
   }
 
   _createClass(IssueTable, [{
-    key: 'render',
+    key: "render",
     value: function render() {
       var issueRows = this.props.issues.map(function (issue) {
         return React.createElement(IssueRow, { key: issue.id, issue: issue });
       });
       return React.createElement(
-        'table',
-        { className: 'bordered-table' },
+        "table",
+        { className: "bordered-table" },
         React.createElement(
-          'thead',
+          "thead",
           null,
           React.createElement(
-            'tr',
+            "tr",
             null,
             React.createElement(
-              'th',
+              "th",
               null,
-              'Id'
+              "Id"
             ),
             React.createElement(
-              'th',
+              "th",
               null,
-              'Status'
+              "Status"
             ),
             React.createElement(
-              'th',
+              "th",
               null,
-              'Owner'
+              "Owner"
             ),
             React.createElement(
-              'th',
+              "th",
               null,
-              'Created'
+              "Created"
             ),
             React.createElement(
-              'th',
+              "th",
               null,
-              'Effort'
+              "Effort"
             ),
             React.createElement(
-              'th',
+              "th",
               null,
-              'Completion Date'
+              "Completion Date"
             ),
             React.createElement(
-              'th',
+              "th",
               null,
-              'Title'
+              "Title"
             )
           )
         ),
         React.createElement(
-          'tbody',
+          "tbody",
           null,
           issueRows
         )
@@ -184,7 +177,7 @@ var IsseAdd = function (_React$Component4) {
   }
 
   _createClass(IsseAdd, [{
-    key: 'handleSubmit',
+    key: "handleSubmit",
     value: function handleSubmit(e) {
       e.preventDefault();
       var form = document.forms.issueAdd;
@@ -198,20 +191,20 @@ var IsseAdd = function (_React$Component4) {
       form.title.value = "";
     }
   }, {
-    key: 'render',
+    key: "render",
     value: function render() {
       return React.createElement(
-        'div',
+        "div",
         null,
         React.createElement(
-          'form',
-          { name: 'issueAdd', onSubmit: this.handleSubmit },
-          React.createElement('input', { type: 'text', name: 'owner', placeholder: 'Owner' }),
-          React.createElement('input', { type: 'text', name: 'title', placeholder: 'Tiltle' }),
+          "form",
+          { name: "issueAdd", onSubmit: this.handleSubmit },
+          React.createElement("input", { type: "text", name: "owner", placeholder: "Owner" }),
+          React.createElement("input", { type: "text", name: "title", placeholder: "Tiltle" }),
           React.createElement(
-            'button',
+            "button",
             null,
-            'Add'
+            "Add"
           )
         )
       );
@@ -229,35 +222,69 @@ var IssueList = function (_React$Component5) {
 
     var _this5 = _possibleConstructorReturn(this, (IssueList.__proto__ || Object.getPrototypeOf(IssueList)).call(this, props));
 
-    _this5.state = { issues: issues };
+    _this5.state = { issues: [] };
     _this5.createIssue = _this5.createIssue.bind(_this5);
     return _this5;
   }
 
   _createClass(IssueList, [{
-    key: 'createIssue',
-    value: function createIssue(newIssue) {
-      var newIssues = this.state.issues.slice();
-      newIssue.id = this.state.issues.length + 1;
-      newIssue.effort = Math.floor(Math.random() * Math.floor(20));
-      newIssues.push(newIssue);
-      this.setState({ issues: newIssues });
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      this.loadData();
     }
   }, {
-    key: 'render',
+    key: "loadData",
+    value: function loadData() {
+      var _this6 = this;
+
+      fetch('/api/issues').then(function (response) {
+        return response.json();
+      }).then(function (data) {
+        console.log("Total count of records " + data._metadata.total_count);
+        data.records.forEach(function (issue) {
+          issue.created = new Date(issue.created);
+          if (issue.completionDate) issue.completionDate = new Date(issue.completionDate);
+        });
+        _this6.setState({ issues: data.records });
+      }).catch(function (err) {
+        return console.log(err);
+      });
+    }
+  }, {
+    key: "createIssue",
+    value: function createIssue(newIssue) {
+      var _this7 = this;
+
+      fetch('/api/issues', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(newIssue)
+      }).then(function (response) {
+        return response.json();
+      }).then(function (updatedIssue) {
+        updatedIssue.created = new Date(updatedIssue.created);
+        if (updatedIssue.completionDate) updatedIssue.completionDate = new Date(updatedIssue.completionDate);
+        var newIssue = _this7.state.issues.concat(updatedIssue);
+        _this7.setState({ issues: newIssue });
+      }).catch(function (err) {
+        return console.log("Error in sending data to server: " + err.message);
+      });
+    }
+  }, {
+    key: "render",
     value: function render() {
       return React.createElement(
-        'div',
+        "div",
         null,
         React.createElement(
-          'h1',
+          "h1",
           null,
-          'Issue Tracker'
+          "Issue Tracker"
         ),
         React.createElement(IssueFilter, null),
-        React.createElement('hr', null),
+        React.createElement("hr", null),
         React.createElement(IssueTable, { issues: this.state.issues }),
-        React.createElement('hr', null),
+        React.createElement("hr", null),
         React.createElement(IsseAdd, { createIssue: this.createIssue })
       );
     }

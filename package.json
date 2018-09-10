@@ -5,7 +5,7 @@
   "main": "server.js",
   "scripts": {
     "compile": "babel src --presets react,es2015 --out-dir static",
-    "start": "nodemon -w server.js",
+    "start": "nodemon -w static server.js",
     "watch": "babel src --presets react,es2015 --out-dir static --watch",
     "test": "echo \"Error: no test specified\" && exit 1"
   },

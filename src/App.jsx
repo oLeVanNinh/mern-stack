@@ -1,14 +1,4 @@
 const contentNode = document.getElementById('contents');
-const issues = [
-  {
-    id: 1, status: 'Open', owner: 'Ravan', created: new Date('2018-08-15'),
-    effort: 5, completionDate: undefined, title: 'Error in console when clicking Add'
-  },
-  {
-    id: 2, status: 'Assigned', owner: 'Eddied', created: new Date('2018-08-13'),
-    effort: 15, completionDate: new Date('2018-08-23'), title: 'Missing bottom border on panel'
-  },
-]
 class IssueRow extends  React.Component {
   render() {
     const issue = this.props.issue;
@@ -90,17 +80,46 @@ class IsseAdd extends  React.Component {
 class IssueList extends  React.Component {
   constructor(props) {
     super(props);
-    this.state = {issues: issues};
+    this.state = {issues: []};
     this.createIssue = this.createIssue.bind(this);
   }
   
-  createIssue(newIssue) {
-    const newIssues = this.state.issues.slice();
-    newIssue.id = this.state.issues.length + 1;
-    newIssue.effort = Math.floor(Math.random() * Math.floor(20));
-    newIssues.push(newIssue);
-    this.setState({ issues: newIssues })
+  componentDidMount() {
+    this.loadData();
   }
+  
+  loadData() {
+    fetch('/api/issues')
+      .then(response => response.json())
+      .then(data => {
+        console.log(`Total count of records ${data._metadata.total_count}`)
+        data.records.forEach(issue => {
+          issue.created = new Date(issue.created);
+          if (issue.completionDate)
+            issue.completionDate = new Date(issue.completionDate);
+        });
+        this.setState({issues: data.records})
+      })
+      .catch(err => console.log(err));
+  }
+  
+  createIssue(newIssue) {
+    fetch('/api/issues', {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify(newIssue)
+    })
+      .then(response => response.json())
+      .then(updatedIssue => {
+        updatedIssue.created = new Date(updatedIssue.created);
+        if (updatedIssue.completionDate)
+          updatedIssue.completionDate = new Date(updatedIssue.completionDate);
+        const newIssue = this.state.issues.concat(updatedIssue)
+        this.setState({issues: newIssue})
+      })
+      .catch(err => console.log(`Error in sending data to server: ${err.message}`));
+  }
+  
   
   render() {
     return(

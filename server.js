@@ -29,7 +29,7 @@ app.post('/api/issues', (req, res) => {
   if (!newIssue.status)
     newIssue.status = 'New';
   issues.push(newIssue);
-  res.json(issues)
+  res.json(newIssue)
 });
 
 app.listen(3000, () => {
