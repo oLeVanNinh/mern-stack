@@ -29,7 +29,7 @@ var IssueRow = function (_React$Component) {
         React.createElement(
           "td",
           null,
-          issue.id
+          issue._id
         ),
         React.createElement(
           "td",
@@ -104,7 +104,7 @@ var IssueTable = function (_React$Component3) {
     key: "render",
     value: function render() {
       var issueRows = this.props.issues.map(function (issue) {
-        return React.createElement(IssueRow, { key: issue.id, issue: issue });
+        return React.createElement(IssueRow, { key: issue._id, issue: issue });
       });
       return React.createElement(
         "table",

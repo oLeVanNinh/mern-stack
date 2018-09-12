@@ -4,7 +4,7 @@ class IssueRow extends  React.Component {
     const issue = this.props.issue;
     return(
       <tr>
-        <td>{issue.id}</td>
+        <td>{issue._id}</td>
         <td>{issue.status}</td>
         <td>{issue.owner}</td>
         <td>{issue.created.toDateString()}</td>
@@ -26,7 +26,7 @@ class IssueFilter extends React.Component {
 
 class IssueTable extends React.Component {
   render() {
-    const issueRows = this.props.issues.map(issue => <IssueRow key={issue.id} issue={issue}/>)
+    const issueRows = this.props.issues.map(issue => <IssueRow key={issue._id} issue={issue}/>)
     return (
       <table className="bordered-table">
         <thead>
@@ -51,7 +51,7 @@ class IsseAdd extends  React.Component {
     super();
     this.handleSubmit = this.handleSubmit.bind(this);
   }
-  
+
   handleSubmit(e) {
     e.preventDefault();
     const form = document.forms.issueAdd;
@@ -83,11 +83,11 @@ class IssueList extends  React.Component {
     this.state = {issues: []};
     this.createIssue = this.createIssue.bind(this);
   }
-  
+
   componentDidMount() {
     this.loadData();
   }
-  
+
   loadData() {
     fetch('/api/issues')
       .then(response => response.json())
@@ -102,7 +102,7 @@ class IssueList extends  React.Component {
       })
       .catch(err => console.log(err));
   }
-  
+
   createIssue(newIssue) {
     fetch('/api/issues', {
       method: 'POST',
@@ -119,8 +119,8 @@ class IssueList extends  React.Component {
       })
       .catch(err => console.log(`Error in sending data to server: ${err.message}`));
   }
-  
-  
+
+
   render() {
     return(
       <div>
