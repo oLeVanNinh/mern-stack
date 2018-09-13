@@ -1,6 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const MongoClient = require('mongodb').MongoClient;
+const issue = require('./issue.js');
 const url = 'mongodb://localhost:27017';
 const dbName = 'issuetracker';
 let db;
@@ -16,20 +17,18 @@ MongoClient.connect(url, { userNewUrlParser: true} )
 
 const app = express();
 app.use(express.static('static'));
+app.use(express.static('dist'));
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
 
+const webpack = require('webpack');
+const config = require('../webpack.config');
+const devMiddleware = require('webpack-dev-middleware');
+const hotMiddleware = require('webpack-hot-middleware');
+const compiler = webpack(config);
 
-const issues = [
-  {
-    id: 1, status: 'Open', owner: 'Ravan', created: new Date('2018-08-15'),
-    effort: 5, completionDate: undefined, title: 'Error in console when clicking Add'
-  },
-  {
-    id: 2, status: 'Assigned', owner: 'Eddied', created: new Date('2018-08-13'),
-    effort: 15, completionDate: new Date('2018-08-23'), title: 'Missing bottom border on panel'
-  },
-]
+app.use(devMiddleware(compiler, {log: console.log}));
+app.use(hotMiddleware(compiler, {noInfo: true}));
 
 app.get('/api/issues', (req, res) => {
   db.collection('issues').find({}).toArray()
