@@ -113,7 +113,7 @@
 /******/
 /******/ 	var hotApplyOnUpdate = true;
 /******/ 	// eslint-disable-next-line no-unused-vars
-/******/ 	var hotCurrentHash = "d27050325fcffadce31e";
+/******/ 	var hotCurrentHash = "4a8063d5224e15ad2b44";
 /******/ 	var hotRequestTimeout = 10000;
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule;
@@ -869,7 +869,7 @@
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("\n\nvar _react = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n\nvar _react2 = _interopRequireDefault(_react);\n\nvar _reactDom = __webpack_require__(/*! react-dom */ \"./node_modules/react-dom/index.js\");\n\nvar _reactDom2 = _interopRequireDefault(_reactDom);\n\nvar _IssueList = __webpack_require__(/*! ./IssueList.jsx */ \"./src/IssueList.jsx\");\n\nvar _IssueList2 = _interopRequireDefault(_IssueList);\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nvar contentNode = document.getElementById('contents');\n_reactDom2.default.render(_react2.default.createElement(_IssueList2.default, null), contentNode);\n\nif (true) {\n  module.hot.accept();\n}\n\n//# sourceURL=webpack:///./src/App.jsx?");
+eval("\n\nvar _react = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n\nvar _react2 = _interopRequireDefault(_react);\n\nvar _reactDom = __webpack_require__(/*! react-dom */ \"./node_modules/react-dom/index.js\");\n\nvar _reactDom2 = _interopRequireDefault(_reactDom);\n\nvar _reactRouterDom = __webpack_require__(/*! react-router-dom */ \"./node_modules/react-router-dom/es/index.js\");\n\nvar _IssueList = __webpack_require__(/*! ./IssueList.jsx */ \"./src/IssueList.jsx\");\n\nvar _IssueList2 = _interopRequireDefault(_IssueList);\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nvar NoMatch = function NoMatch() {\n  return _react2.default.createElement(\n    'h1',\n    null,\n    'Page Not Found'\n  );\n};\nvar contentNode = document.getElementById('contents');\n\nvar RoutedApp = function RoutedApp() {\n  return _react2.default.createElement(\n    _reactRouterDom.BrowserRouter,\n    null,\n    _react2.default.createElement(\n      'div',\n      null,\n      _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/', component: _IssueList2.default }),\n      _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/nomatch', component: NoMatch })\n    )\n  );\n};\n_reactDom2.default.render(_react2.default.createElement(RoutedApp, null), contentNode);\n\nif (true) {\n  module.hot.accept();\n}\n\n//# sourceURL=webpack:///./src/App.jsx?");
 
 /***/ }),
 

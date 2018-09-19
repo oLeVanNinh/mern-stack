@@ -2,6 +2,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const MongoClient = require('mongodb').MongoClient;
 const issue = require('./issue.js');
+const path = require('path');
 const url = 'mongodb://localhost:27017';
 const dbName = 'issuetracker';
 let db;
@@ -51,6 +52,10 @@ app.post('/api/issues', (req, res) => {
     })
     .catch(err => console.log(err))
 });
+
+app.get('/*', (req, res) => {
+  res.sendFile(path.join(__dirname, '/../static/'));
+})
 
 app.listen(3000, () => {
   console.log("App is running at port 3000")

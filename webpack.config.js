@@ -4,7 +4,7 @@ const webpack = require('webpack');
 module.exports = {
   entry: {
     app: ['./src/App.jsx', 'webpack-hot-middleware/client'],
-    vendor: ['react', 'react-dom', 'whatwg-fetch']
+    vendor: ['react', 'react-dom', 'whatwg-fetch', 'react-router-dom']
   },
   optimization: {
     splitChunks: {
