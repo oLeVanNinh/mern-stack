@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter, Route } from 'react-router-dom';
 import IssueList from './IssueList.jsx';
+import IssueEdit from './IssueEdit.jsx';
 
 const NoMatch = () => <h1>Page Not Found</h1>;
 const contentNode = document.getElementById('contents');
@@ -11,6 +12,7 @@ const RoutedApp = () => (
     <div>
       <Route exact path="/" component={IssueList}/>
       <Route exact path="/nomatch" component={NoMatch} />
+      <Route exact path="/edit" component={IssueEdit} />
     </div>
   </BrowserRouter>
 );
