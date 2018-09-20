@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { BrowserRouter, Route } from 'react-router-dom';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import IssueList from './IssueList.jsx';
 import IssueEdit from './IssueEdit.jsx';
 
@@ -11,8 +11,8 @@ const RoutedApp = () => (
   <BrowserRouter>
     <div>
       <Route exact path="/" component={IssueList}/>
-      <Route exact path="/nomatch" component={NoMatch} />
-      <Route exact path="/edit" component={IssueEdit} />
+      <Route exact path="/nomatch/:id" component={NoMatch} />
+      <Route path="/edit/:id" component={IssueEdit} />
     </div>
   </BrowserRouter>
 );
