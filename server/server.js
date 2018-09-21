@@ -32,6 +32,9 @@ app.use(devMiddleware(compiler, {log: console.log}));
 app.use(hotMiddleware(compiler, {noInfo: true}));
 
 app.get('/api/issues', (req, res) => {
+  const filter = {};
+  console.log(req.query);
+  if (req.query.status) filter.status = req.query.status;
   db.collection('issues').find({}).toArray()
     .then(issues => {
       const meta_data = { total_count: issues.length };

@@ -11,8 +11,8 @@ const RoutedApp = () => (
   <BrowserRouter>
     <div>
       <Route exact path="/" component={IssueList}/>
-      <Route exact path="/nomatch/:id" component={NoMatch} />
-      <Route path="/edit/:id" component={IssueEdit} />
+      <Route exact path="/nomatch" component={NoMatch} />
+      <Route path="/issues/:id" component={IssueEdit} />
     </div>
   </BrowserRouter>
 );
